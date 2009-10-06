@@ -1,0 +1,21 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load ifsetting_tag %}
+{% load pagination_tags %}
+
+{% block head_title %}{% trans "Promises" %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans "Promises" %}</h1>
+
+    {% autopaginate object_list 3 %}
+    <ul>
+    {% for promise in object_list %}
+    <li><a href="{% url promise_detail promise.id%}">{{ promise }}</a></li>
+
+    {% endfor %}
+    </ul>
+    {% paginate %}
+    
+{% endblock %}

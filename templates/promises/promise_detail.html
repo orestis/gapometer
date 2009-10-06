@@ -1,0 +1,23 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load ifsetting_tag %}
+
+{% block head_title %}{{promise.title}}{% endblock %}
+
+{% block body %}
+    <h1>{{promise.title}}</h1>
+
+    <h2>{% trans "Status" %}: {{promise.status}}</h2>
+
+    <p>{{promise.body}}</p>
+
+    <ul>
+        {% for source in promise.source.all %}
+        <li>{{source}}</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url promise_list %}">{% trans "Back to promises" %}</a></p>
+
+{% endblock %}
