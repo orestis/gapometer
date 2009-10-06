@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 
-from django.views.generic.simple import direct_to_template
+from django.views.generic.simple import redirect_to
 
 from django.contrib import admin
 admin.autodiscover()
@@ -16,9 +16,8 @@ else:
 
 
 urlpatterns = patterns('',
-    url(r'^$', direct_to_template, {
-        "template": "homepage.html",
-    }, name="home"),
+    url(r'^$', redirect_to, {'url': 'promises'}
+    , name="home"),
     
     url(r'^admin/invite_user/$', 'signup_codes.views.admin_invite_user', name="admin_invite_user"),
     url(r'^account/signup/$', signup_view, name="acct_signup"),
