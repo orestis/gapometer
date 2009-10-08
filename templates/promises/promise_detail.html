@@ -2,21 +2,31 @@
 
 {% load i18n %}
 {% load ifsetting_tag %}
+{% load comments_tag %}
+{% load tagging_tags %}
 
-{% block head_title %}{{promise.title}}{% endblock %}
+{% block head_title %}#{{promise.title}} - {{promise.title}}{% endblock %}
 
 {% block body %}
-    <h1>{{promise.title}}</h1>
+    <h1>#{{promise.number}} - {{promise.title}}</h1>
+    {% tags_for_object promise as promise_tags %}
+    <span>Tags: {% for tag in promise_tags %} {{tag}} &nbsp; {% endfor %}</span>
 
     <h2>{% trans "Status" %}: {{promise.status}}</h2>
 
     <p>{{promise.body}}</p>
 
+    Updates:
     <ul>
-        {% for source in promise.source.all %}
-        <li>{{source}}</li>
+        {% for update in promise.updates.all %}
+        <li>{{update.title}}</li>
+        {{update.body}}
         {% endfor %}
     </ul>
+
+    <hr />
+
+    {% comments promise %}
 
     <p><a href="{% url promise_list %}">{% trans "Back to promises" %}</a></p>
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from promises.models import Promise, Source, Status
+from promises.models import Promise, Update, Status
 
 admin.site.register(Promise)
-admin.site.register(Source)
+admin.site.register(Update)
 admin.site.register(Status)

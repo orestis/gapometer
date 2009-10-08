@@ -137,6 +137,10 @@ INSTALLED_APPS = (
     'ajax_validation',
     'uni_form',
     'staticfiles',
+    'threadedcomments',
+    'threadedcomments_extras',
+    'tagging',
+    'gravatar',
     
     # internal (for now)
     'basic_profiles',
